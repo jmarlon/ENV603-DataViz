@@ -37,6 +37,8 @@ p2 <- ggplot(rel_by_region, aes(x = religion, y = pct, fill = religion)) +
   facet_grid(~ bigregion)
 
 p2
+ggsave("plot1_try1.png",
+       plot = last_plot())
 
 # Make modifications to either plot. Google is your friend here. A few suggestions:
 # (1) Add a title
@@ -54,16 +56,6 @@ rel_by_region <- rel_by_region %>%
       TRUE ~ as.character(religion)
     ))
 
-levels(rel_by_region$religion.group)
-rel_by_region$religion.group <- factor(rel_by_region$religion.group)
-levels(rel_by_region$religion.group)
-
-rel_by_region <- gss_sm %>%
-  group_by(bigregion, religion) %>%
-  summarize(N = n()) %>%
-  mutate(freq = N / sum(N),
-         pct = round((freq*100), 0))
-
 
 p3 <- ggplot(rel_by_region, aes(x = religion.group, y = pct, fill = religion.group)) +
   geom_col(position = "dodge2") +
@@ -73,6 +65,8 @@ p3 <- ggplot(rel_by_region, aes(x = religion.group, y = pct, fill = religion.gro
   facet_grid(~ bigregion)
  
 p3 # WRONG
+ggsave("plot2_case_when_sequencing_mistake.png",
+       plot = last_plot())
 
 #--> Need to recode first, THEN calculate pct
 
@@ -96,6 +90,8 @@ p4 <- ggplot(rel_by_region2, aes(x = religion.group, y = pct, fill = religion.gr
   facet_grid(~ bigregion)
 
 p4 # CORRECT
+ggsave("plot3_correct_grouping_and_percentages.png",
+       plot = last_plot())
 
 # Add title, clean up gridlines, etc.
 # Help is here: https://www.datanovia.com/en/blog/ggplot-theme-background-color-and-grids/
@@ -127,7 +123,9 @@ p5 <- ggplot(rel_by_region2, aes(x = religion.group, y = pct, fill = religion.gr
   )
 
 p5
-p5 +  scale_y_continuous(breaks=c(0, 25, 50)) 
+p5 +  scale_y_continuous(breaks=c(0, 25, 50))
+ggsave("plot4_theme_cleaning.png",
+       plot = last_plot())
 
 ## Change the ordering of the religions (i.e., relevel the factor)
 
@@ -158,6 +156,6 @@ p6
 
 
 # Once you're happy with your changes, save your plot:
-ggsave("plot2.png",
+ggsave("plot5_reorder_factor_levels.png",
   plot = last_plot(),
-  dpi = 300)
+  dpi = 150)
