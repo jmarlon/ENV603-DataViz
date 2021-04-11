@@ -37,7 +37,7 @@ p2 <- ggplot(rel_by_region, aes(x = religion, y = pct, fill = religion)) +
   facet_grid(~ bigregion)
 
 p2
-ggsave("plot1_try1.png",
+ggsave("Ex1-plot1_try1.png",
        plot = last_plot())
 
 # Make modifications to either plot. Google is your friend here. A few suggestions:
@@ -65,7 +65,7 @@ p3 <- ggplot(rel_by_region, aes(x = religion.group, y = pct, fill = religion.gro
   facet_grid(~ bigregion)
  
 p3 # WRONG
-ggsave("plot2_case_when_sequencing_mistake.png",
+ggsave("Ex1-plot2_case_when_sequencing_mistake.png",
        plot = last_plot())
 
 #--> Need to recode first, THEN calculate pct
@@ -90,7 +90,7 @@ p4 <- ggplot(rel_by_region2, aes(x = religion.group, y = pct, fill = religion.gr
   facet_grid(~ bigregion)
 
 p4 # CORRECT
-ggsave("plot3_correct_grouping_and_percentages.png",
+ggsave("Ex1-plot3_correct_grouping_and_percentages.png",
        plot = last_plot())
 
 # Add title, clean up gridlines, etc.
@@ -124,7 +124,7 @@ p5 <- ggplot(rel_by_region2, aes(x = religion.group, y = pct, fill = religion.gr
 
 p5
 p5 +  scale_y_continuous(breaks=c(0, 25, 50))
-ggsave("plot4_theme_cleaning.png",
+ggsave("Ex1-plot4_theme_cleaning.png",
        plot = last_plot())
 
 ## Change the ordering of the religions (i.e., relevel the factor)
@@ -156,6 +156,6 @@ p6
 
 
 # Once you're happy with your changes, save your plot:
-ggsave("plot5_reorder_factor_levels.png",
+ggsave("Ex1-plot5_reorder_factor_levels.png",
   plot = last_plot(),
   dpi = 150)

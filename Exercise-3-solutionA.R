@@ -155,6 +155,6 @@ ggplot(elections_historic, aes(x = popular_pct, y = ec_pct,
 
 # Save your plot: 
 
-ggsave("Ex3-example-plot.png",
+ggsave("Ex3-example-plot-annotated.png",
        plot = last_plot())
 #       dpi = 300)
