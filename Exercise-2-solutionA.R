@@ -73,12 +73,22 @@ ggplot(data = by_country,
   geom_point(size=3) +
   labs(x = "Donor Procurement Rate",
        y = "", color = "Consent Law") +
+  facet_wrap("consent_law") +
   theme(legend.position="top")
 
 # Try adding a facet_wrap() by consent law to the plot above. Facet_wrap has additional arguments that you could explore, including scales =, and ncol=. Again, Google is your friend here.
 
 # Finally, add a title and remove gridlines. Once you are happy with your final Cleveland dot plot, save it.
+ggplot(data = by_country,
+       mapping = aes(x = donors_mean, y = reorder(country, donors_mean),
+                     color = consent_law)) + 
+  geom_point(size=3) +
+  labs(x = "Donor Procurement Rate",
+       y = "", color = "Consent Law") +
+  facet_wrap("consent_law") +
+  ggtitle("Presuming consent appears to yield higher organ donor rates")
+  theme(legend.position="top")
 
-ggsave("plot2.png",
-       plot = last_plot(),
-       dpi = 300)
+
+ggsave("Ex2-plot-final.png",
+       plot = last_plot())
