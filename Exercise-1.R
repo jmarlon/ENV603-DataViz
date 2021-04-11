@@ -16,7 +16,7 @@ rel_by_region <- gss_sm %>%
 
 # See how the pipeline above has taked the gss_sm dataframe and transformed it into a summary table.
 
-View(gss_sum)
+View(gss_sm)
 View(rel_by_region)
 
 # Now let's make some plots!
