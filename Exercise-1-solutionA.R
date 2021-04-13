@@ -63,7 +63,9 @@ p3 <- ggplot(rel_by_region, aes(x = religion.group, y = pct, fill = religion.gro
   guides(fill = FALSE) + 
   coord_flip() + 
   facet_grid(~ bigregion)
- 
+
+droplevels(rel_by_region$religion)
+
 p3 # WRONG
 ggsave("Ex1-plot2_case_when_sequencing_mistake.png",
        plot = last_plot())
@@ -129,11 +131,12 @@ ggsave("Ex1-plot4_theme_cleaning.png",
 
 ## Change the ordering of the religions (i.e., relevel the factor)
 
-levels(rel_by_region2$religion.group) # check the levels... it's not a factor!
+levels(rel_by_region2$religion.group) # check the levels... it's not a factor
 rel_by_region2$religion.group <- factor(rel_by_region2$religion.group) # make it a factor
 levels(rel_by_region2$religion.group) # check the levels... NOW it's a factor
 
 # reorder the levels
+dput(levels(rel_by_region2$religion.group)) # print the levels for copy and pasting
 rel_by_region2$religion.group <- fct_relevel(rel_by_region2$religion.group, "Other", "Jewish", "Catholic")
 levels(rel_by_region2$religion.group) # check the new levels
 

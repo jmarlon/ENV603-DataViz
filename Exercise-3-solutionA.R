@@ -133,7 +133,7 @@ ggplot(elections_historic, aes(x = popular_pct, y = ec_pct,
   geom_hline(yintercept = 0.5, size = 1.4, color = "gray80") +
   geom_vline(xintercept = 0.5, size = 1.4, color = "gray80") +
   geom_point() +
-  scale_colour_manual(values = c("D.-R." = "gray2", "Dem." = "lightblue2", "Rep." = "tomato1", "Whig" = "black")) + 
+  scale_colour_manual(values = c("D.-R." = "gray", "Dem." = "lightblue2", "Rep." = "tomato1", "Whig" = "black"), name = "Party") + 
   geom_text_repel(data = subset(elections_historic,
                                 win_party == "Whig"), 
                   size = 3,
@@ -143,15 +143,14 @@ ggplot(elections_historic, aes(x = popular_pct, y = ec_pct,
            fontface = "bold",
            color = "black",
            hjust=1) +
-  scale_x_continuous(labels = scales::percent) +
-  scale_y_continuous(labels = scales::percent) +
+  scale_x_continuous(labels = scales::percent_format(accuracy = 1)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
   theme_classic() + # removes gridlines
   labs(x = "Winner's share of popular vote", 
        y = "Winner's share of electoral college vote", 
        title = "Presidential Elections: Who were the Whigs?", 
        subtitle = "The Whig Party of the 1840s",
-       caption = "Alongside the slightly larger Democratic Party, the Whig Party was one of the two major parties in the United States between the late 1830s and the early 1850s") # adds a caption
-
+       caption = "Alongside the slightly larger Democratic Party, the Whig Party was one of the two major parties in the United States between the late 1830s and the early 1850s") # adds a caption 
 
 # Save your plot: 
 
