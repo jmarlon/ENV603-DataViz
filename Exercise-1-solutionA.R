@@ -2,7 +2,7 @@
 # Dataset 1: Religion by region
 
 # If you have not yet installed these libraries, use install.package("")
-
+# Load libraries
 library(tidyverse)
 library(socviz)
 library(RColorBrewer)
